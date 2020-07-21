@@ -2,23 +2,28 @@ package com.example.googledev;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    TextView t1;
+    Button b1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //this is a comment
+        t1 = (TextView)findViewById(R.id.t1);
+        b1 = (Button)findViewById(R.id.b1);
+        b1.setOnClickListener(this);
     }
-    public void showToast(View view){
-        String msg = "Hello Toast!";
-        int duration = 2000;
-        @SuppressLint("WrongConstant") Toast toast = Toast.makeText(this, msg, duration);
-        toast.show();
+
+    @Override
+    public void onClick(View view) {
+        t1.setText("You Clicked Button1 ....!!");
+    }
+    public void doSomething(View view){
+        t1.setText("Your Clicked Button2 ....!!");
     }
 }
