@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">GoogleDev</string>
+    <string name="my_story">
+        This is the context of checking the code, to having the knowledge of
+        generating the text view with the help of java code
+    </string>
+    <string name="another_story">
+        This is an another story.
+    </string>
 </resources>

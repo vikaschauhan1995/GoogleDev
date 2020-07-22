@@ -1,29 +1,31 @@
 package com.example.googledev;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.util.Log;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView t1;
-    Button b1;
+import androidx.appcompat.app.AppCompatActivity;
+
+//import Linear.LayoutParams;
+
+public class MainActivity extends AppCompatActivity{
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        t1 = (TextView)findViewById(R.id.t1);
-        b1 = (Button)findViewById(R.id.b1);
-        b1.setOnClickListener(this);
-    }
+        //setContentView(R.layout.activity_main);
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
 
-    @Override
-    public void onClick(View view) {
-        t1.setText("You Clicked Button1 ....!!");
-    }
-    public void doSomething(View view){
-        t1.setText("Your Clicked Button2 ....!!");
+        TextView myTextview =  new TextView(this);
+        myTextview.setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
+        myTextview.setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
+        myTextview.setMinLines(3);
+        myTextview.setText(R.string.my_story);
+
+        linearLayout.addView(myTextview);
+        setContentView(linearLayout);
+
     }
 }
