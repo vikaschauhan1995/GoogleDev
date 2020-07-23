@@ -6,4 +6,7 @@
     <string name="another_story">
         This is an another story.
     </string>
+    <string name="editTextHint">
+        Enter Your Data
+    </string>
 </resources>

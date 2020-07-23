@@ -1,31 +1,25 @@
 package com.example.googledev;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.net.URI;
-
 
 public class MainActivity extends AppCompatActivity{
-
+    EditText e1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        e1 = (EditText) findViewById(R.id.edit1);
     }
-    public void clickToOpenBrowser(View view){
-        Uri uri = Uri.parse("tel:8005551234");
-        Intent it = new Intent(Intent.ACTION_DIAL, uri);
-        startActivity(it);
+
+    public void doSomething(View view) {
+        Intent i1 = new Intent(this, Second.class);
+        i1.putExtra("user",e1.getText().toString());
+        startActivity(i1);
     }
-    // Intent.ACTION_VIEW is for all type
-    // Intent.ACTION_DIAL is specifically for Dial app
-//    it is all upon URI
-//    http: for browser apps
-//    tel: for telephone apps
-//    geo: for map apps
 }
