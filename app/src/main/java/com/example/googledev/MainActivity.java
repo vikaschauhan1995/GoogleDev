@@ -1,8 +1,9 @@
 package com.example.googledev;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,49 +13,21 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toast.makeText(this, "onCreate Finished", Toast.LENGTH_SHORT).show();
-        Log.i("MainActivity","onCreate Appps");
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Toast.makeText(this, "onStart Finished", Toast.LENGTH_SHORT).show();
-        Log.i("MainActivity","onStart Appps");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Toast.makeText(this, "onResume Finished", Toast.LENGTH_SHORT).show();
-        Log.i("MainActivity","onResume Appps");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Toast.makeText(this, "onPause Finished", Toast.LENGTH_SHORT).show();
-        Log.i("MainActivity","onPause Appps");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Toast.makeText(this, "onStop Finished", Toast.LENGTH_SHORT).show();
-        Log.i("MainActivity","onStop Appps");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Toast.makeText(this, "onRestart Finished", Toast.LENGTH_SHORT).show();
-        Log.i("MainActivity","onRestart Appps");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(this, "onDestroy Finished", Toast.LENGTH_SHORT).show();
-        Log.i("MainActivity","onDestroy Appps");
+    public void doSomething(View view){
+        switch (view.getId()){
+            case R.id.b1:
+                Intent i1 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/"));
+                startActivity(i1);
+                break;
+            case R.id.b2:
+                Intent i2 = new Intent(Intent.ACTION_VIEW, Uri.parse("tel:9871129338"));
+                startActivity(i2);
+                break;
+            case R.id.b3:
+                Intent i3  = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:28.7041, 77.1025"));
+                startActivity(i3);
+                break;
+        }
     }
 }
