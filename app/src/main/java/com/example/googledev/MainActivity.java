@@ -28,8 +28,7 @@ public class MainActivity extends AppCompatActivity{
         Log.i("MainActivity","Executed 3");
         int result = a1 + a2;
         Log.i("MainActivity","Executed 4");
-        tv1.setText(result);//here is the error
-//        tv1.setText(""+result);
+        tv1.setText(""+result);
         Log.i("MainActivity","Executed 5");
     }
 }
