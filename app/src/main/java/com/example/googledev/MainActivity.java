@@ -1,33 +1,35 @@
 package com.example.googledev;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity{
+    EditText e1, e2;
+    TextView tv1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        e1 = (EditText) findViewById(R.id.edit1);
+        e2 = (EditText) findViewById(R.id.edit2);
+        tv1 = (TextView) findViewById(R.id.myResult);
     }
-    public void doSomething(View view){
-        switch (view.getId()){
-            case R.id.b1:
-                Intent i1 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/"));
-                startActivity(i1);
-                break;
-            case R.id.b2:
-                Intent i2 = new Intent(Intent.ACTION_VIEW, Uri.parse("tel:9871129338"));
-                startActivity(i2);
-                break;
-            case R.id.b3:
-                Intent i3  = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:28.7041, 77.1025"));
-                startActivity(i3);
-                break;
-        }
+    public void doAdd(View view){
+        Log.i("MainActivity","Executed 1");
+        int a1 = Integer.parseInt(e1.getText().toString());
+        Log.i("MainActivity","Executed 2");
+        int a2 = Integer.parseInt(e2.getText().toString());
+        Log.i("MainActivity","Executed 3");
+        int result = a1 + a2;
+        Log.i("MainActivity","Executed 4");
+        tv1.setText(result);//here is the error
+//        tv1.setText(""+result);
+        Log.i("MainActivity","Executed 5");
     }
 }
