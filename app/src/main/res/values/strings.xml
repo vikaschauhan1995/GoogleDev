@@ -11,4 +11,25 @@
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Java Fragment</string>
+
+    <string-array name="pet_name">
+        <item>Cat</item>
+        <item>Dog</item>
+        <item>Rat</item>
+        <item>Rabit</item>
+        <item>Pegine</item>
+        <item>Snake</item>
+        <item>Cow</item>
+        <item>Elephant</item>
+    </string-array>
+    <string-array name="disc">
+        <item>Cat is cute</item>
+        <item>Dog is faithful</item>
+        <item>Rat is cheezy</item>
+        <item>Rabit is very cute</item>
+        <item>Pegine can fly</item>
+        <item>Snake is sneeky</item>
+        <item>Cow gives milk</item>
+        <item>Elephants are dependable</item>
+    </string-array>
 </resources>
