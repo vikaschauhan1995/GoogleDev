@@ -1,82 +1,81 @@
 package com.example.googledev;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.ContextMenu;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity{
-    EditText e1, e2;
+
+    TabLayout myTab;
+    ViewPager myPage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        myTab = (TabLayout) findViewById(R.id.myTab);
+        myPage = (ViewPager) findViewById(R.id.myPager);
 
-        e1 = (EditText) findViewById(R.id.edit1);
-        e2 = (EditText) findViewById(R.id.edit2);
+        myPage.setAdapter(new MyOwnPagerAdapter(getSupportFragmentManager()));
+        myTab.setupWithViewPager(myPage);
 
-        registerForContextMenu(e1);
-        registerForContextMenu(e2);
+        myTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                myPage.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
     }
+    class MyOwnPagerAdapter extends FragmentPagerAdapter {
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.option_menu, menu);
-        return true;
-    }
+        String data[] = {"Java", "Android", "iOS"};
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.m1:
-                Toast.makeText(MainActivity.this, "You clicked settting", Toast.LENGTH_SHORT).show();
-            break;
-            case R.id.m2:
-                Toast.makeText(MainActivity.this, "You clicked mic", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.m3:
-                Toast.makeText(MainActivity.this, "You clicked status", Toast.LENGTH_SHORT).show();
-                break;
+        public MyOwnPagerAdapter(@NonNull FragmentManager fm) {
+            super(fm);
         }
-        return true;
-    }
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        switch (v.getId()){
-            case R.id.edit1:
-                getMenuInflater().inflate(R.menu.edit1_menu,menu);
-                break;
-            case R.id.edit2:
-                getMenuInflater().inflate(R.menu.edit2_menu, menu);
-                break;
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
+            if (position == 0) {
+                return new Java();
+            }
+            if(position == 1){
+                return new Android();
+            }
+            if(position == 2){
+                return new IOS();
+            }
+            return null;
         }
-    }
 
-    @Override
-    public boolean onContextItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.i1:
-                Toast.makeText(this, "Clicked Item 1", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.i2:
-                Toast.makeText(this, "Clicked Item 2", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.s1:
-                Toast.makeText(this, "Clicked One", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.s2:
-                Toast.makeText(this, "Clicked Two", Toast.LENGTH_SHORT).show();
-                break;
+        @Override
+        public int getCount() {
+            return data.length;
         }
-        return true;
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return data[position];
+        }
     }
 }

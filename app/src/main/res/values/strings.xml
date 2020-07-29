@@ -9,4 +9,6 @@
     <string name="editTextHint">
         Enter Your Data
     </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Java Fragment</string>
 </resources>
